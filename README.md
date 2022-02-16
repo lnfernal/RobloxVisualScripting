@@ -1,5 +1,5 @@
 ## RVS - Roblox Visual Scripting
 
-[Place logo here]
+(/showcase.png)
 
 ### *Made in python*
