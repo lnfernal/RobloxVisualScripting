@@ -68,10 +68,8 @@ def Encrypt(string):
 def CheckLogin(event=None):
     global login_accepted
     global PassCode
-    #Encrypt("foxwire121")
     PassCodeSaved = ""
     fileExists = None
-    #Encrypt("rohanspeeltgames")
     try:
         fileExists = open("./auth.ini", "r")
         fileExists.close()
