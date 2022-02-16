@@ -4,6 +4,7 @@ from tkinter import messagebox
 from tkinter.filedialog import Open
 from tkinter.font import BOLD, Font
 import time
+import math
 
 Start_id = 0
 login_accepted = False
@@ -151,7 +152,7 @@ def on_drag_motion(event):
     x = widget.winfo_x() - widget._drag_start_x + event.x
     y = widget.winfo_y() - widget._drag_start_y + event.y
     widget.place(x=x, y=y)
-
+    
 counter= 1
 def Add(whatToAdd):
     global counter
@@ -161,7 +162,7 @@ def Add(whatToAdd):
         Title_Font = Font(Canv, family="Calibri", size=15, weight=BOLD)
         Input_Font = Font(Canv, family="Tahoma", size=10)
 
-        Box = Frame(Canv, height=90, width=200, bg="#1e1e1e")
+        Box = Frame(Canv, height=120, width=200, bg="#1e1e1e")
         Box_Head = Frame(Box, height=30, width=200, bg="#1e1e1e")
         Box_Content = Frame(Box, height=120, width=200, bg="#1e1e1e")
         Title = Label(Box_Head, pady=10, fg="white", bg="#1e1e1e", text=whatToAdd, font=Title_Font, padx=25)
