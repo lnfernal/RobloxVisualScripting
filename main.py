@@ -276,7 +276,7 @@ def DestroyAllWindows():
     exit(1)
 
 Main_Window = Frame(master=window, height="30", bg="#2e2e2e")
-Title_Label = Label(Main_Window, text="RVS - Riff Visual Scripting", fg="white", bg="#2e2e2e", font=Title_Font, padx=15)
+Title_Label = Label(Main_Window, text="RVS - Roblox Visual Scripting", fg="white", bg="#2e2e2e", font=Title_Font, padx=15)
 Close_Button = Button(Main_Window, text="x", fg="white", padx=10, bg="#2e2e2e", relief=FLAT, font=Title_Icon_Font, command=DestroyAllWindows)
 
 Middle_Window = Frame(window, bg="#393938", height="30")
