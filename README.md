@@ -1,5 +1,5 @@
 ## RVS - Roblox Visual Scripting
 
-(/showcase.png)
+![showcase](showcase.png)
 
 ### *Made in python*
