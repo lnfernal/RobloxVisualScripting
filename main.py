@@ -158,6 +158,7 @@ def Add(whatToAdd):
     global counter
     global Canv
     global Start_id
+    
     if (whatToAdd == "String"):
         Title_Font = Font(Canv, family="Calibri", size=15, weight=BOLD)
         Input_Font = Font(Canv, family="Tahoma", size=10)
@@ -189,7 +190,7 @@ def OpenBlockWindow():
         
         addWindow = Tk()
 
-        Title_Font = Font(addWindow, family="Calibri", size=13, weight=BOLD)
+        Title_Font = Font(addWindow, family="Calibri", size=12, weight=BOLD)
         List_Font = Font(addWindow, family="Tahoma", size=11, weight=BOLD)
 
         def CheckSelected():
@@ -206,7 +207,7 @@ def OpenBlockWindow():
             addWindowOpen = False
             addWindow.destroy()
 
-        TitleBar = Frame(addWindow, bg="#3e3e3e", height=50)
+        TitleBar = Frame(addWindow, bg="#3e3e3e", height=30)
         Title_Label = Label(TitleBar, text="Add a Block", fg="white", bg="#3e3e3e", padx=10, font=Title_Font)
         Close = Button(TitleBar, text="x", fg="white", bg="#3e3e3e", relief=FLAT, font=Title_Font, padx=5, command=destroyWindow)
         List = Listbox(addWindow, justify=CENTER, selectmode=SINGLE, width=300, height=10, font=List_Font, fg="white", bg="#3e3e3e", bd=0)
