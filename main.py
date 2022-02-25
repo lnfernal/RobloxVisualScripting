@@ -151,36 +151,43 @@ def on_drag_motion(event):
     widget = event.widget
     x = widget.winfo_x() - widget._drag_start_x + event.x
     y = widget.winfo_y() - widget._drag_start_y + event.y
-    widget.place(x=x, y=y)
+
+    widgetx = widget.winfo_x()
+    widgety = widget.winfo_y()
+
+    while True:
+        distance_left_x = x - widgetx
+        distance_left_y = y - widgety
+
+        widget.place(x=(distance_left_x/2), y=(distance_left_y/2))
+        time.sleep(.0001)
+        widget.place(x=x, y=y)   
+        break
+
+class StringBlock:
+    # add custom parameters
+    def __init__(self, parentWindow):
+        self.parentWindow = parentWindow
     
-counter= 1
+    def LoadUI(self):
+        # all the widgets
+        self.Title_Box = Frame(self.parentWindow, height=50, width=50, bg="#1e1e1e")
+
+        # --- packing --- #
+        self.Title_Box.pack(side=TOP)
+
+        # --- dragging --- #
+        make_draggable(self.Title_Box)
+
 def Add(whatToAdd):
-    global counter
     global Canv
     global Start_id
     
+    # if string
     if (whatToAdd == "String"):
-        Title_Font = Font(Canv, family="Calibri", size=15, weight=BOLD)
-        Input_Font = Font(Canv, family="Tahoma", size=10)
+        string = StringBlock(Canv)
+        string.LoadUI()
 
-        Box = Frame(Canv, height=120, width=200, bg="#1e1e1e")
-        Box_Head = Frame(Box, height=30, width=200, bg="#1e1e1e")
-        Box_Content = Frame(Box, height=120, width=200, bg="#1e1e1e")
-        Title = Label(Box_Head, pady=10, fg="white", bg="#1e1e1e", text=whatToAdd, font=Title_Font, padx=25)
-        Close_Button = Button(Box_Head, text="X", takefocus=0, activebackground="#1e1e1e", font=Title_Font, pady=10, fg="red", bg="#1e1e1e", relief=FLAT, command=Box.destroy)
-        InputName = Text(Box_Content, fg="white", bg="#3e3e3e", relief=FLAT, font=Input_Font, height=.5, width=15, insertwidth=1, insertofftime=200)
- 
-        # --- packing --- #
-        Box_Head.pack(side=TOP)
-        Box_Content.pack(side=TOP)
-        Title.pack(side=LEFT)
-        Close_Button.pack(side=RIGHT)
-        InputName.pack(side=TOP)
-        Box.pack(side=LEFT)
-        Box.pack_propagate(0)
-
-        make_draggable(Box)
- 
 # --- Add window --- #
 addWindowOpen = False
 def OpenBlockWindow():
@@ -244,7 +251,7 @@ def OpenBlockWindow():
 # --- Export it all --- #
 def Export():
     file = open("./Exported_Script.lua", "w+")
-    Exported_String = "-- This file was created using RVS ---\n\n"
+    Exported_String = "-- This file was created using RVS (Riff Visual Scripting) ---\n\n"
     
     # add all items in a flow method
 
@@ -278,7 +285,7 @@ def DestroyAllWindows():
     exit(1)
 
 Main_Window = Frame(master=window, height="30", bg="#2e2e2e")
-Title_Label = Label(Main_Window, text="RVS - Roblox Visual Scripting", fg="white", bg="#2e2e2e", font=Title_Font, padx=15)
+Title_Label = Label(Main_Window, text="RVS - Riff Visual Scripting", fg="white", bg="#2e2e2e", font=Title_Font, padx=15)
 Close_Button = Button(Main_Window, text="x", fg="white", padx=10, bg="#2e2e2e", relief=FLAT, font=Title_Icon_Font, command=DestroyAllWindows)
 
 Middle_Window = Frame(window, bg="#393938", height="30")
